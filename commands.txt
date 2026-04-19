@@ -15,3 +15,13 @@ ionic cap sync
 ionic capacitor  build android
 ionic capacitor run android
 
+
+npm install cordova-plugin-x-socialsharing
+
+dañado:
+npm install @ionic-native/social-sharing
+remplazo:
+npm install @awesome-cordova-plugins/social-sharing
+
+npm install es6-promise-plugin
+ionic cap sync
