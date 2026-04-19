@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActionSheetController, Platform } from '@ionic/angular';
+import { ActionSheetButton, ActionSheetController, Platform } from '@ionic/angular';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 
@@ -40,39 +40,28 @@ export class ArticleComponent {
   async onOpenMenu() {
     console.log('onOpenMenu');
 
-    const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Options',
-      buttons: [
-        // {
-        //   text: 'Share',
-        //   icon: 'share-outline',
-        //   handler: () => {
-        //     console.log('Share clicked');
-        //     this.onShareArticle();
-        //   }
-        // },
-        {
-          text: 'Add to Favorites',
-          icon: 'heart-outline',
-          handler: () => {
-            console.log('Add to Favorites clicked');
-            this.onToggleFavorite();
-          }
-        },
-        {
-          text: 'Cancel',
-          icon: 'close-outline',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
+    const normalBtns: ActionSheetButton[] = [
+      {
+        text: 'Add to Favorites',
+        icon: 'heart-outline',
+        handler: () => {
+          console.log('Add to Favorites clicked');
+          this.onToggleFavorite();
         }
-      ]
-    });
+      },
+      {
+        text: 'Cancel',
+        icon: 'close-outline',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }
+    ];
 
     if (this.platform.is('capacitor')) {
-      const share = {
+      const shareBtn: ActionSheetButton = {
         text: 'Share',
         icon: 'share-outline',
         handler: () => {
@@ -81,8 +70,15 @@ export class ArticleComponent {
         }
       };
 
-      actionSheet.buttons.unshift(share);
+      normalBtns.unshift(shareBtn);
     }
+
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Options',
+      buttons: [
+        ...normalBtns
+      ]
+    });
 
     await actionSheet.present();
   }
