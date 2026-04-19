@@ -1,0 +1,17 @@
+<app-header title="Para ti"></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense" mode="ios" class="ion-no-border">
+    <ion-toolbar>
+      <ion-title size="large">Noticias La Hora</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-articles [articles]="articles"></app-articles>
+
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  <ion-infinite-scroll threshold="25%" position="bottom" (ionInfinite)="loadData()">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
