@@ -10,3 +10,8 @@ npm i @ionic-native/in-app-browser
 remplazo:
 npm install @awesome-cordova-plugins/in-app-browser @awesome-cordova-plugins/core
 ionic cap sync
+
+
+ionic capacitor  build android
+ionic capacitor run android
+

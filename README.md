@@ -65,7 +65,7 @@ La API key de NewsAPI.org se configura en `src/environments/environment.ts`:
 ```typescript
 export const environment = {
   production: false,
-  apiKey: 'cdff27e3afe540d0a91c0522e755b60d',
+  apiKey: 'use su clave',
   urlApi: 'https://newsapi.org/v2'
 };
 ```
