@@ -25,3 +25,7 @@ npm install @awesome-cordova-plugins/social-sharing
 
 npm install es6-promise-plugin
 ionic cap sync
+
+https://github.com/ionic-team/ionic-storage
+npm install @ionic/storage
+npm install @ionic/storage-angular
