@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { NewsResponse, Article, ArticlesByCategoryAndPage, QueryParams } from '../interfaces';
+import { storedArticlesByCategory } from '../data/mock-news2';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,8 @@ export class NewsService {
 
   private apiKey = environment.apiKey;
   private urlApi = environment.urlApi;
-  private articlesByCategoryAndPage: ArticlesByCategoryAndPage = {};
+  //  private articlesByCategoryAndPage: ArticlesByCategoryAndPage = {};
+  private articlesByCategoryAndPage: ArticlesByCategoryAndPage = storedArticlesByCategory;
 
   constructor(private http: HttpClient) { }
 
@@ -72,22 +74,26 @@ export class NewsService {
 
   getTopHeadlinesByCategory(category: string, loadMore: boolean = false): Observable<Article[]> {
 
-    if (loadMore) {
-      return this.getArticlesByCategory(category);
-    }
-
-    if (this.articlesByCategoryAndPage[category]) {
-      // of convierte en observable lo que se pasa por argumento
-      return of(this.articlesByCategoryAndPage[category].articles);
-    }
-
-    return this.getArticlesByCategory(category);
-
-    // return this.executeQuery<NewsResponse>('/top-headlines', {
-    //   category,
-    // }).pipe(
-    //   map(({ articles }: NewsResponse) => articles)
-    // );
+    return of(this.articlesByCategoryAndPage['business'].articles);
   }
+
+  //   getTopHeadlinesByCategory(category: string, loadMore: boolean = false): Observable<Article[]> {
+  //   if (loadMore) {
+  //     return this.getArticlesByCategory(category);
+  //   }
+
+  //   if (this.articlesByCategoryAndPage[category]) {
+  //     // of convierte en observable lo que se pasa por argumento
+  //     return of(this.articlesByCategoryAndPage[category].articles);
+  //   }
+
+  //   return this.getArticlesByCategory(category);
+
+  //   // return this.executeQuery<NewsResponse>('/top-headlines', {
+  //   //   category,
+  //   // }).pipe(
+  //   //   map(({ articles }: NewsResponse) => articles)
+  //   // );
+  // }
 
 }
