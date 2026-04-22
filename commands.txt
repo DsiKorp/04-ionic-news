@@ -37,3 +37,10 @@ ng add @angular/pwa
 ionic build --prod --service-worker
 https://www.npmjs.com/package/http-server
 npm -g i http-server
+
+npm install -g firebase-tools 
+firebase login
+firebase init
+
+
+

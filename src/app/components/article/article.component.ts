@@ -70,11 +70,13 @@ export class ArticleComponent {
         icon: 'share-outline',
         handler: () => {
           console.log('Share clicked');
-          this.onShareArticle();
+          this.onShareArticleCordova();
         }
       };
 
       normalBtns.unshift(shareBtn);
+    } else {
+      this.onShareArticleWebShareApi();
     }
 
     const actionSheet = await this.actionSheetCtrl.create({
@@ -87,7 +89,7 @@ export class ArticleComponent {
     await actionSheet.present();
   }
 
-  onShareArticle() {
+  onShareArticleCordova() {
     console.log('onShareArticle');
 
     const { title, source, urlToImage, url } = this.article;
@@ -100,10 +102,24 @@ export class ArticleComponent {
     );
   }
 
+  onShareArticleWebShareApi() {
+    // navigator['share']
+    if (navigator.share) {
+      navigator.share({
+        title: this.article.title,
+        text: this.article.description,
+        url: this.article.url,
+      })
+        .then(() => console.log('Successful web share API'))
+        .catch((error) => console.log('Error sharing', error));
+    } else {
+      console.log('Web Share API not supported in this browser.');
+    }
+  }
+
   onToggleFavorite() {
     console.log('onToggleFavorite');
     this.storageService.saveRemoveArticle(this.article);
   }
-
 
 }

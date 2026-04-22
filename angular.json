@@ -29,9 +29,17 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "manifest.webmanifest",
+                "input": "public",
+                "output": "."
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
+            "styles": [
+              "src/global.scss",
+              "src/theme/variables.scss"
+            ],
             "scripts": [],
             "allowedCommonJsDependencies": [
               "localforage"
@@ -114,9 +122,28 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "public/manifest.webmanifest",
+                "input": ".",
+                "output": "."
+              },
+              {
+                "glob": "public/icons/**/*",
+                "input": ".",
+                "output": "icons"
+              },
+              {
+                "glob": "public/icons/**/*",
+                "input": ".",
+                "output": "icons"
+              },
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": ".es.scss"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
             "scripts": []
           },
           "configurations": {
