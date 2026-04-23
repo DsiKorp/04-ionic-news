@@ -11,10 +11,21 @@ remplazo:
 npm install @awesome-cordova-plugins/in-app-browser @awesome-cordova-plugins/core
 ionic cap sync
 
+ionic capacitor add android
+ionic capacitor copy android
 
-ionic capacitor  build android
+ionic capacitor build android
 ionic capacitor run android
 
+generar apk:
+cd android
+./gradlew assembleRelease
+
+keytool -genkey -v -keystore mi-llave.keystore -alias mi-alias -keyalg RSA -keysize 2048 -validity 10000
+apksigner sign --ks mi-llave.keystore app-release-unsigned.apk
+zipalign -v 4 app-release-unsigned.apk mi-app-final.apk
+
+adb install -r app-news.apk
 
 npm install cordova-plugin-x-socialsharing
 
