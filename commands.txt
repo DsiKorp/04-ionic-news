@@ -1,4 +1,4 @@
-https://github.com/DsiKorp/04-ionic-news
+https://github.com/DsiKorp/ionic-dsk-news
 
 ionic g s services/news --skip-tests
 

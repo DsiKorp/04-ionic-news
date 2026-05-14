@@ -1,4 +1,4 @@
-# 04-ionic-news
+# ionic-dsk-news
 
 Aplicación móvil de noticias desarrollada con Ionic y Angular, que consume la API de **NewsAPI.org** para mostrar titulares y noticias por categoría.
 
