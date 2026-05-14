@@ -1,3 +1,5 @@
+https://github.com/DsiKorp/04-ionic-news
+
 ionic g s services/news --skip-tests
 
 ionic g m components --dry-run
@@ -55,3 +57,20 @@ firebase init
 
 
 
+
+pnpm add @capacitor/ios@latest
+npx cap add ios
+pnpm add @ionic/core
+
+pnpm ionic serve
+
+# 1. Crea la versión de producción de tu app web
+ionic build --prod
+
+# 2. Copia los archivos a la carpeta 'android' y actualiza plugins
+pnpm cap sync android
+
+sdk use java 21.0.2-open
+pnpm cap run android
+
+pnpm cap open android
