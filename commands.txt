@@ -1,4 +1,4 @@
-https://github.com/DsiKorp/ionic-dsk-news
+https://github.com/DsiKorp/04-ionic-news
 
 ionic g s services/news --skip-tests
 
@@ -66,11 +66,75 @@ pnpm ionic serve
 
 # 1. Crea la versión de producción de tu app web
 ionic build --prod
+pnpm build
+o 
+pnpm ionic build --prod
+pnpm cap sync android
 
 # 2. Copia los archivos a la carpeta 'android' y actualiza plugins
 pnpm cap sync android
-
+////////////////////////////////////////////////
 sdk use java 21.0.2-open
 pnpm cap run android
 
 pnpm cap open android
+pnpm approve-builds
+
+opcional si falla pnpm approve-builds
+pnpm install --only-built-dependencies      
+
+pnpm add -D @capacitor/assets
+
+# Para generar todo automáticamente
+npx capacitor-assets generate
+npx capacitor-assets generate --android
+----------------------------------------------..
+Resumen de lo que hice:
+
+Resolviste los warnings de npm: Moví las configuraciones de pnpm desde .npmrc a un nuevo .pnpmrc
+Preparé la estructura de assets: Copié icon.png y splash.png a una carpeta assets en la raíz del proyecto
+Ejecuté capacitor-assets: Se generaron exitosamente:
+Android: 87 assets (782.34 KB)
+iOS: 10 assets (1.06 MB)
+PWA: 33 assets (1.14 MB)
+Los assets ahora están listos en:
+
+android/app/src/main/res/mipmap-*/ para Android
+Assets.xcassets para iOS
+icons para PWA
+
+--------------------------------------
+
+me puedes enumerar cada uno de los comandos que ejecutaste para solucionar esto?
+
+Claro, aquí están los comandos que ejecuté en orden:
+
+Comandos ejecutados:
+1. Copiar las imágenes a public/assets/
+cp -v /home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic\ 6\ Crear\ aplicaciones\ IOS,\ Android\ con\ Angular\ -\ 2019/04-ionic-news/android/app/src/main/assets/public/assets/icon/icon.png "/home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic 6 Crear aplicaciones IOS, Android con Angular - 2019/04-ionic-news/public/assets/" && mkdir -p "/home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic 6 Crear aplicaciones IOS, Android con Angular - 2019/04-ionic-news/public/assets/" && cp -v /home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic\ 6\ Crear\ aplicaciones\ IOS,\ Android\ con\ Angular\ -\ 2019/04-ionic-news/android/app/src/main/assets/public/assets/icon/icon.png "/home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic 6 Crear aplicaciones IOS, Android con Angular - 2019/04-ionic-news/public/assets/" && cp -v /home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic\ 6\ Crear\ aplicaciones\ IOS,\ Android\ con\ Angular\ -\ 2019/04-ionic-news/android/app/src/main/assets/public/assets/icon/splash.png "/home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic 6 Crear aplicaciones IOS, Android con Angular - 2019/04-ionic-news/public/assets/"
+
+2. Crear carpeta assets en la raíz y copiar las imágenes
+cd "/home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic 6 Crear aplicaciones IOS, Android con Angular - 2019/04-ionic-news" && mkdir -p assets && cp public/assets/icon.png assets/ && cp public/assets/splash.png assets/ && ls -la assets/
+
+3. Ver las opciones del comando capacitor-assets
+cd "/home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic 6 Crear aplicaciones IOS, Android con Angular - 2019/04-ionic-news" && npx capacitor-assets generate --help
+
+
+4. Generar los assets (comando principal)
+cd "/home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic 6 Crear aplicaciones IOS, Android con Angular - 2019/04-ionic-news" && npx capacitor-assets generate 2>&1
+
+5. Ver el resumen final de la generación
+cd "/home/dsikorp/Documents/DocumentsLinux/Code/Ionic/ionic 6 Crear aplicaciones IOS, Android con Angular - 2019/04-ionic-news" && npx capacitor-assets generate 2>&1 | tail -20
+
+
+Cambios de configuración (sin comandos):
+Limpié .npmrc (removí configuraciones obsoletas de pnpm)
+Creé .pnpmrc con las configuraciones de pnpm correctas
+
+
+
+-···················######################################
+
+ # Para generar todo automáticamente
+npx capacitor-assets generate
+
