@@ -1,5 +1,6 @@
-package io.ionic.news;
+package io.dsk.ionic.news;
 
 import com.getcapacitor.BridgeActivity;
 
-public class MainActivity extends BridgeActivity {}
+public class MainActivity extends BridgeActivity {
+}

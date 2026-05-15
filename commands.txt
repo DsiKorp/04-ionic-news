@@ -138,3 +138,17 @@ Creé .pnpmrc con las configuraciones de pnpm correctas
  # Para generar todo automáticamente
 npx capacitor-assets generate
 
+pnpm build:android
+
+pnpm cap build android
+pnpm cap build android --androidreleasetype=APK --no-signing
+
+---------------------
+generar apk
+pnpm ionic build --prod
+pnpm cap sync android
+
+cd android
+./gradlew assembleRelease
+
+android/app/build/outputs/apk/release/app-release-unsigned.apk

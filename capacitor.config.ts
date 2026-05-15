@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.news',
+  appId: 'io.dsk.ionic.news',
   appName: 'ionic-dsk-news',
   webDir: 'www'
 };
