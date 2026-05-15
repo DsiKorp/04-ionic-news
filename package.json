@@ -1,7 +1,7 @@
 {
   "name": "ionic-dsk-news",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
+  "version": "1.0.0",
+  "author": "Juan Delgado",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
